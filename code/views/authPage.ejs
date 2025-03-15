@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Page</title>
+    <link rel="stylesheet" href="/css/authPage.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="https://res.cloudinary.com/dyqqmpv1a/image/upload/v1742048072/My/si9antqmkvht8hrkov8e.png"
+                class="logo-svg" alt="Money Manager Logo" />
+            <span>FlowLearn</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Features</a>
+        </div>
+        <button class="blueButton"> <a class="sign_up" calss="dropdown" href="/auth">Account</a> </button>
+    </nav>
+
+    <% if (error.length> 0) { %>
+        <div class="alert alert-error">
+            <%= error %>
+        </div>
+        <% } %>
+
+            <% if (success.length> 0) { %>
+                <div class="alert alert-success">
+                    <%= success %>
+                </div>
+                <% } %>
+
+
+                    <div class="auth-container">
+                        <div class="form-container" id="formContainer">
+                            <!-- Sign In Form -->
+                            <div class="form sign-in">
+                                <h2 class="mainHeader">Sign In</h2>
+                                <form action="/login" method="POST">
+                                    <div class="form-group">
+                                        <input type="email" id="signInEmail" name="email" required>
+                                        <label for="signInEmail">Email</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" id="signInPassword" name="password" required>
+                                        <label for="signInPassword">Password</label>
+                                    </div>
+                                    <button type="submit" class="submit-btn">Sign In</button>
+                                </form>
+                            </div>
+
+                            <!-- Sign Up Form -->
+                            <div class="form sign-up">
+                                <h2 class="mainHeader">Create Account</h2>
+                                <form action="/register" method="POST">
+                                    <div class="form-group">
+                                        <input type="text" id="signUpUsername" name="username" required>
+                                        <label for="signUpUsername">Username</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" id="signUpEmail" name="email" required>
+                                        <label for="signUpEmail">Email</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" id="signUpPassword" name="password" required>
+                                        <label for="signUpPassword">Password</label>
+                                    </div>
+                                    <button type="submit" class="submit-btn">Sign Up</button>
+                                </form>
+                            </div>
+
+                            <!-- Sliding Overlay -->
+                            <div class="overlay-container" id="overlayContainer">
+                                <div class="overlay">
+                                    <div class="overlay-panel left">
+                                        <h2>Welcome</h2>
+                                        <p>To keep connected please login with your personal info</p>
+                                        <button class="switch-btn" id="signInBtn">Sign In</button>
+                                    </div>
+                                    <div class="overlay-panel right">
+                                        <h2>Hello, Friend!</h2>
+                                        <p>Enter your personal details and start journey with us</p>
+                                        <button class="switch-btn" id="signUpBtn">Sign Up</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script src="/js/authPage.js"></script>
+                    <script>
+                        setTimeout(() => {
+                            const alertElem = document.querySelector('.alert');
+                            if (alertElem) {
+                                alertElem.style.transition = 'opacity 0.5s ease-out';
+                                alertElem.style.opacity = '0';
+                                setTimeout(() => alertElem.remove(), 500); // remove after fade out
+                            }
+                        }, 2000);
+                    </script>
+
+</body>
+
+</html>
